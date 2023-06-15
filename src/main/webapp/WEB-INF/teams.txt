@@ -1,0 +1,19 @@
+SELECT * FROM employees
+WHERE department_id = 50
+  AND salary > 4000;
+SELECT * FROM employees
+WHERE first_name LIKE '%a';
+SELECT * FROM employees
+WHERE (department_id = 50 OR department_id = 80)
+  AND commission_pct IS NOT NULL;
+SELECT * FROM employees
+WHERE salary BETWEEN 8000 AND 9000;
+SELECT phone_number, REPLACE (phone_number, '.', '-') new_phone_number
+FROM employees;
+SELECT department_id, salary, COUNT (*)
+FROM employees
+GROUP BY department_id, salary
+HAVING COUNT (*) > 1;
+SELECT first_name FROM employees
+WHERE LENGTH (first_name) =
+      (SELECT MAX (LENGTH (first_name)) FROM employees);
