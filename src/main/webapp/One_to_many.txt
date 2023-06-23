@@ -1,0 +1,15 @@
+create table cars
+(
+    id       bigint default nextval('"Cars_id_seq"'::regclass) not null
+        constraint "Cars_pkey"
+            primary key,
+    brand    varchar(20)                                       not null,
+    model    varchar(20)                                       not null,
+    users_id bigint                                            not null
+        constraint cars_fk
+            references users
+            on update cascade on delete cascade
+);
+
+alter table cars
+    owner to postgres;

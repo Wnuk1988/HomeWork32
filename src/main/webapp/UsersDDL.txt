@@ -1,0 +1,11 @@
+create table users
+(
+    id          bigserial
+        primary key,
+    first_name  varchar(20) default 'first_name'::character varying,
+    second_name varchar(20) default 'second_name'::character varying,
+    age         integer not null
+);
+
+alter table users
+    owner to postgres;

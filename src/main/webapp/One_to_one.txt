@@ -1,0 +1,15 @@
+create table email_info
+(
+    id       bigserial
+        primary key,
+    email    varchar(30) not null
+        unique,
+    users_id bigint      not null
+        unique
+        constraint email_info_fk
+            references users
+            on update cascade on delete cascade
+);
+
+alter table email_info
+    owner to postgres;

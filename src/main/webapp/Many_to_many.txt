@@ -1,0 +1,28 @@
+create table fitness_center
+(
+    id       bigserial
+        primary key,
+    services varchar(20) not null,
+    price    bigint      not null
+);
+
+alter table fitness_center
+    owner to postgres;
+
+
+create table "L_users_fitness_center"
+(
+    id                bigserial
+        primary key,
+    users_id          bigint not null
+        constraint l_users_fitness_center_users_id_fk
+            references users
+            on update cascade on delete cascade,
+    fitness_center_id bigint not null
+        constraint l_users_fitness_center_fitness_center_id_fk
+            references fitness_center
+            on update cascade on delete cascade
+);
+
+alter table "L_users_fitness_center"
+    owner to postgres;
